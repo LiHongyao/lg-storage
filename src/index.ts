@@ -1,7 +1,7 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-04-07 18:00:49
- * @LastEditTime: 2021-04-07 19:54:39
+ * @LastEditTime: 2021-04-07 20:04:03
  * @LastEditors: Li-HONGYAO
  * @Description:
  * @FilePath: /lg-storage/src/index.ts
@@ -17,6 +17,8 @@ class Storage {
   }
   /**
    * 读取数据
+   * @param key 键
+   * @returns
    */
   public static get<T = any>(key: string): T | null {
     const data = localStorage.getItem(key);
@@ -27,6 +29,11 @@ class Storage {
   }
   /**
    * 移除数据
+   * key的类型可以为字符串、字符串数组以及undefined
+   * 根据不同类型，有如下三种结果：
+   * - 当key为字符串时/移除指定key对应的数据
+   * - 当key为字符串数组时/遍历删除指定key对应的数据
+   * - 当key为undefined时/清空所有本地数据
    * @param key
    */
   public static del(key?: string | string[]) {
