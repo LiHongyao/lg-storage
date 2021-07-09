@@ -1,8 +1,8 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-04-07 18:00:49
- * @LastEditTime: 2021-04-07 20:04:03
- * @LastEditors: Li-HONGYAO
+ * @LastEditTime: 2021-07-09 11:39:11
+ * @LastEditors: Lee
  * @Description:
  * @FilePath: /lg-storage/src/index.ts
  */
@@ -20,12 +20,11 @@ class Storage {
    * @param key 键
    * @returns
    */
-  public static get<T = any>(key: string): T | null {
+  public static get<T = any>(key: string): T | undefined {
     const data = localStorage.getItem(key);
     if (data) {
       return JSON.parse(data) as T;
     }
-    return null;
   }
   /**
    * 移除数据
